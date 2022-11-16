@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { HabitacionesService } from '../services/habitaciones.service'
+import { HabitacionesService } from '../services/servicioHabitaciones/habitaciones.service';
+import { ReservasService } from '../services/servicioReservas/reservas.service';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +10,23 @@ import { HabitacionesService } from '../services/habitaciones.service'
 export class HomeComponent{
 
   public habitaciones:any[] = []
+  public reservas:any[] = []
 
-  constructor( public servicionHabitacion:HabitacionesService) { 
+  constructor( public servicionHabitacion:HabitacionesService, public servicioReserva:ReservasService) { 
+
+    servicioReserva.consultarReservas()
+    .subscribe(respuesta =>{
+      console.log(respuesta)
+      this.reservas = respuesta
+    })
+
    servicionHabitacion.consultarHabitaciones()
     .subscribe(respuesta =>{
       console.log(respuesta)
       this.habitaciones = respuesta
     })
+
+    
   }
 
   ngOnInit(): void {
