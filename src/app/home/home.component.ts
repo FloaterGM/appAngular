@@ -16,14 +16,14 @@ export class HomeComponent{
 
     servicioReserva.consultarReservas()
     .subscribe(respuesta =>{
-      console.log(respuesta)
-      this.reservas = respuesta
+      console.log(respuesta.datos)
+      this.reservas = respuesta.datos
     })
 
    servicionHabitacion.consultarHabitaciones()
     .subscribe(respuesta =>{
-      console.log(respuesta)
-      this.habitaciones = respuesta
+      console.log(respuesta.datos)
+      this.habitaciones = respuesta.datos
     })
 
     

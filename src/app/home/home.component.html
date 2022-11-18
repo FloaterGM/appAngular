@@ -1,12 +1,35 @@
 <app-menu></app-menu>
-<div class="banner">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <app-form-reserva></app-form-reserva>
+<main>
+    <div class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <app-form-reserva></app-form-reserva>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<app-descripcion></app-descripcion>
+    <section>
+        <app-descripcion>
+
+        </app-descripcion>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-4">
+                <div class="col" *ngFor="let habitacion of habitaciones">
+                    <div class="card" style="width: 18rem;">
+                        <img src={{habitacion.fotografias[0]}} class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h3 class="card-title">{{habitacion.nombre}}</h3>
+                          <p class="card-text">{{habitacion.descripcion}}</p>
+                          <h5>Valor por noche: <br> $ {{habitacion.valorNoche}} COP</h5>
+                          <h6>Numero maximo de personas: {{habitacion.numeroMaximoPersonas}}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 <app-footer></app-footer>
